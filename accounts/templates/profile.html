@@ -1,0 +1,36 @@
+{%extends 'home.html'%}
+
+
+{% block content%}
+
+{% if error %}
+
+<p class="headers">{{error}}</p>
+
+{% endif%}
+<br>
+
+<h1>You will receive sms alerts on this no.</h1>
+
+<img src="/static/images/alerts.png">
+
+<hr>
+{%if no%}
+<p>Mobile no. is given. You can update it.</p>
+
+
+{%else%}
+<p>No mobile no. is given. You won't receive alerts then.</p>
+
+{%endif%}
+
+<form method="POST" action="{% url 'prof' %}">
+    {% csrf_token  %}
+    <p><input type="text" name="mobile" value={{no}}></p>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Update No.">
+</form>
+
+
+
+{%endblock%}

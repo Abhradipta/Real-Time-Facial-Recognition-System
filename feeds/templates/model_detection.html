@@ -1,0 +1,47 @@
+{%extends 'home.html'%}
+
+{% block content %}
+
+<br>
+
+<h1>Capturing feeds!</h1>
+
+<br>
+<br>
+<hr>
+<br>
+
+{% if msg%}
+<p id="error">{{msg}}</p>
+{%endif%}
+
+<form method="POST" action="{%url 'train' %}">
+    {%csrf_token%}
+        <input class="btn btn-primary" type="submit" value="Train the model!" />
+    
+</form>
+
+<br>
+<hr>
+<br>
+
+<form method="POST" action="{%url 'start' %}">
+    {%csrf_token%}
+        <input class="btn btn-primary" type="submit" value="Start feed Capture!" />
+    
+</form>
+This will start the webcam and record feed.  Press q to end capture.
+
+<br>
+<br>
+
+<form method="POST" action="{%url 'end' %}">
+    {%csrf_token%}
+        <input class="btn btn-primary" type="submit" value="End feed Capture!" />
+    
+</form>
+This will end the the process and redirect you back. 
+<br>
+<hr>
+<a href="{%url 'feed-detect'%}">Go back..</a>
+{%endblock%}

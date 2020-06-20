@@ -1,0 +1,43 @@
+{%extends 'home.html'%}
+
+
+{% block content%}
+
+{% if error %}
+
+<p class="headers">{{error}}</p>
+{% endif%}
+<br>
+
+<h1>Sign Up!</h1>
+
+<br>
+<form method="POST" action="{%url 'signup' %}">
+{%csrf_token%}
+
+    Username:
+    <br>
+    <input type="text" name="username" placeholder="Must be filled"/>
+    <br>
+    First Name:
+    <br>
+    <input type="text" name="first" placeholder="Must be filled"/>
+    <br>
+    Last Name:
+    <br>
+    <input type="text" name="last" placeholder="Must be filled"/>
+    <br>
+    Enter Password:
+    <br>
+    <input type="password" name="pass1"/>
+    <br>
+    Confirm Password:
+    <br>
+    <input type="password" name="pass2"/>
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Sign Up!" />
+
+</form>
+
+{%endblock%}

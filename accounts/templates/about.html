@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{% block content%}
+
+
+<h1>User Details</h1>
+
+<div class="container" id="details">
+<img src="/static/images/download.png" />
+Username: {{user}}
+</div>
+
+<form action="{%url 'about' %}" method="POST">
+    {%csrf_token%}
+<p>First Name: <input type="text" name="fname" value={{fn}} ></p>
+<p>Last Name: <input type="text" name="lname" value={{ln}} ></p>
+<input class="btn btn-primary" type="submit" value="Save changes"/>
+</form>
+
+<br>
+<br>
+<p>You have {{record}} files with us.</p>
+
+<br>
+<h4>About</h4>
+<textarea rows="5" cols="100">This employee details belongs to this security application.
+None of this will be shared or data publicised.
+You cannot view or delete any data from the server.
+Your account cannot be deleted once created.
+This data will aid in future scanning process.
+</textarea>
+
+{%endblock%}

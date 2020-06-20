@@ -1,0 +1,31 @@
+{%extends 'home.html'%}
+
+
+{% block content%}
+
+{% if error %}
+
+<p class="headers">{{error}}</p>
+{% endif%}
+<br>
+
+<h1>System generated logs</h1>
+<hr>
+<br>
+<form method="POST" action="{%url 'logs' %}">
+{%csrf_token%}
+   <input class="btn btn-primary" type="submit" value="Clear logs!" />
+</form>
+
+{% if data%}
+
+    {% for each in data%}
+        <p>{{each}}</p>
+    {%endfor%}
+
+{%else%}
+<br>
+<p>No logs found.</p>
+{%endif%}
+
+{%endblock%}

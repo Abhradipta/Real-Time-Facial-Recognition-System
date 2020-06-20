@@ -1,0 +1,34 @@
+{%extends 'home.html'%}
+
+
+{% block content%}
+
+{% if error %}
+
+<p class="headers">{{error}}</p>
+{% endif%}
+<br>
+
+<h1>Log In!</h1>
+<br>
+
+<img height="200" src="/static/images/login.png">
+<br>
+<br>
+<form method="POST" action="{%url 'login' %}">
+{%csrf_token%}
+
+    Username:
+    <br>
+    <input type="text" name="username"/>
+    <br>
+    Enter Password:
+    <br>
+    <input type="password" name="pass1"/>
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Log In!" />
+
+</form>
+
+{%endblock%}

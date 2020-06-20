@@ -1,0 +1,74 @@
+{%extends 'home.html'%}
+
+{%block content%}
+
+<style>
+    .left
+    {
+        float:left;
+    }
+    .right
+    {
+        float:right;
+    }
+</style>
+
+<br>
+
+<h1>Register your face here!</h1>
+<br>
+
+<div>
+
+<div class="left">
+<img src="/static/images/upload.png" >
+</div>
+
+<div class="right"> 
+<p><b>The model might have your face data if you have trained it before.</b></p>
+<p><b>Retrain to make the model accurate.</b></p>
+<p><b>Else start to train for the first time.</b></p>
+</div>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<hr>
+{% if msg %}
+<p>You have {{msg}} image data files present in the server.</p>
+{%else %}
+<p>You have no previous data files on the server.</p>
+{%endif %}
+
+<form action={%url 'add-face'%}>
+    <input class="btn btn-primary" type="submit" value="Train from server-webcam"/>
+</form>
+
+<br>
+<br>
+<form action={%url 'add-face-remote'%} method="POST">
+    {%csrf_token%}
+    <p>Train from remote webcam</p>
+    URL:<input type="text" name="link">
+    <input class="btn btn-primary" type="submit" value="Train from remote-webcam"/>
+</form>
+
+<br>
+<hr>
+<form action={%url 'pic'%} method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <p>
+                <input name="id_image" type="file" accept="image/*" capture="user"/>
+        </p>
+
+    <input class="btn btn-primary" type="submit" value="Take pic from client"/>
+</form>
+<br>
+<hr>
+<p><b>Note:</b></p>
+<p id="note">Take a close photo so that entire image contains only the face.</p>
+<p>On mobile devices this is going to snap images.</p>
+<p>On computers take a snapshot and upload it.(Live feed not possible due to resolution issues)</p>
+
+{%endblock%}

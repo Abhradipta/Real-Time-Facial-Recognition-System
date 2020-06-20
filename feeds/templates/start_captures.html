@@ -1,0 +1,39 @@
+{%extends 'home.html'%}
+
+
+{% block content%}
+
+{% if error %}
+
+<p class="headers">{{error}}</p>
+{% endif%}
+<br>
+
+<h1>Start to Capture feeds!</h1>
+
+<br>
+<img height="250" src="/static/images/surveillance.jpg">
+<br>
+<h2>Capture from remote device.</h2>
+<form method="POST" action="{%url 'with_url' %}">
+{%csrf_token%}
+
+    Url: <input type="text" name="url">
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Train Model and Start Capture!" />
+
+</form>
+
+<br>
+<hr>
+<br>
+<br>
+<h2>Capture from local server-webcam.</h2>
+<form method="POST" action="{%url 'without_url' %}">
+    {%csrf_token%}
+        <input class="btn btn-primary" type="submit" value="Train Model and Start Capture!" />
+    
+</form>
+
+{%endblock%}

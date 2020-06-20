@@ -1,0 +1,152 @@
+<!doctype html>
+{% load staticfiles%}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Entry/Exit Portal</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+  </head>
+
+  
+  
+  <body>
+    <header>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{%url 'home'%}">Entry/Exit portal</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+
+      {% if user.is_authenticated %}
+
+      <li class="nav-item ">
+          <a class="nav-link" >Signed in as {{request.user.username}}.<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:document.getElementById('logout').submit()">LogOut</a>
+          <form id="logout" method="POST" action="{% url 'logout'%}">
+            {%csrf_token%}
+            <input type="hidden">
+          </form>
+        </li>
+        {%if user.is_superuser%}
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'feed-detect'%}">Capture feeds</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'prof'%}">My Alert Settings!</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'logs'%}">System logs!</a>
+        </li>
+  
+        {%else%}
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'reg-face'%}">Register Face</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'about'%}">About myself</a>
+        </li>
+        {%endif%}
+
+      
+      
+      {% else %}
+      <li class="nav-item ">
+        <a class="nav-link" href="{%url 'signup'%}">Sign Up  <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'login'%}">Login</a>
+      </li>
+      
+      {% endif %}
+      
+         </ul>
+    
+  </div>
+</nav>
+            
+ 
+</header>
+
+<style>
+  h1
+  {
+    font-size: 100sp; 
+    color:red;
+  }
+  p
+  {
+    font-family: 'Segoe UI';
+  }
+  .headers
+  {
+    color:blue;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  .error
+  {
+    color:green;
+    font-family: 'Times New Roman', Times, serif;
+  }
+</style>
+<body>
+<div class="container ">
+  <br>
+  <br>
+  {% block content%}
+  {% endblock%}
+
+</div>
+</body>
+
+<footer class="text-muted">
+  <br><br><br><br><br>
+  <div class="container text-center">
+    <p>Copyright @Company{%now "Y"%}</p>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>
