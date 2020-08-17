@@ -100,3 +100,7 @@ The above limitations can be resolved by:
 2.The size of image in the training data set can be compressed for faster training of the data.
 
 3.Subject spacing should be properly gapped.
+
+
+
+Technology: Python | Python Django | OpenCV | Machine Learning | Computer Vision
