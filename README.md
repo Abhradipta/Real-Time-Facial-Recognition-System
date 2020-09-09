@@ -103,4 +103,4 @@ The above limitations can be resolved by:
 
 
 
-# Technology: Python | Python Django | OpenCV | Machine Learning | Computer Vision
+Technology: Python | Python Django | OpenCV | Machine Learning | Computer Vision
